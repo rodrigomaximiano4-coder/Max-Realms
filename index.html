@@ -13,159 +13,213 @@ button{font:inherit;cursor:pointer;border:0}
 .brand{font-weight:950;letter-spacing:.15em}.brand b{color:var(--gold)}.brand small{font-size:8px;color:#8296a6;margin-left:7px}.meta{margin-left:auto;display:flex;gap:14px;font-size:13px}
 .circle{width:40px;height:40px;border-radius:50%;background:#10202d;color:#fff;border:1px solid #ffffff18;font-weight:900}
 
-/* ATUALIZAÇÃO 3D: Ambiente Tridimensional */
-.screen{
-    display:none;
-    height:calc(100vh - 58px);
-    position:relative;
-    overflow:hidden;
-    perspective: 1200px; /* Cria a profundidade de câmera z no espaço 3D */
-    perspective-origin: 50% 50%;
-}
-.screen.active{display:block}.host{position:absolute;inset:0}.host canvas{display:block;width:100%;height:100%}
-.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#02060de6 0%,#02060d8c 40%,transparent 73%,#0006),radial-gradient(circle at 72% 28%,rgba(255,218,140,.09),transparent 24%)}
+.screen{display:none;height:calc(100vh - 58px);position:relative;overflow:hidden;perspective:1200px}.screen.active{display:block}
+.host{position:absolute;inset:0}.host canvas{display:block;width:100%;height:100%}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top, #02060dff 0%, #02060d00 50%), radial-gradient(circle at 50% 50%, transparent 20%, #03060acc 100%)}
 
-/* ATUALIZAÇÃO 3D: Painel de Menu Principal */
-.menu{
-    position:absolute;
-    z-index:10;
-    left:6vw;
-    top:8vh;
-    max-width:760px;
-    transform-style: preserve-3d;
-    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
-}
+.menu{position:absolute;z-index:10;left:6vw;top:8vh;max-width:760px;transform-style:preserve-3d;transition:transform 0.15s ease-out;will-change:transform}
 .eyebrow{font-size:10px;letter-spacing:.25em;color:var(--gold);font-weight:950}
-.menu h1{
-    font-size:clamp(58px,7.9vw,116px);
-    line-height:.8;
-    margin:17px 0 24px;
-    letter-spacing:-.055em;
-    text-shadow:0 14px 55px #000;
-    transform: translateZ(50px); /* Projeta o título principal mais para frente no eixo Z */
-}
+.menu h1{font-size:clamp(58px,7.9vw,116px);line-height:.8;margin:17px 0 24px;letter-spacing:-.055em;text-shadow:0 14px 55px #000;transform:translateZ(40px)}
 .menu h1 em{font-style:normal;color:var(--gold)}
-.menu p{
-    max-width:610px;
-    color:#c2cbd2;
-    line-height:1.62;
-    font-size:15px;
-    transform: translateZ(25px); /* Projeta a descrição em um plano intermediário */
-}
-.action-container {
-    transform-style: preserve-3d;
-    transform: translateZ(40px); /* Projeta os botões de ação para frente */
-}
-.primary,.secondary{padding:13px 18px;border-radius:12px;font-weight:950;transition: transform 0.2s;}
+.menu p{max-width:610px;color:#c2cbd2;line-height:1.62;font-size:15px;transform:translateZ(20px)}
+.action-container{transform-style:preserve-3d;transform:translateZ(30px)}
+.primary,.secondary{padding:13px 18px;border-radius:12px;font-weight:950;transition:transform 0.2s}
 .primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#161006}
 .secondary{background:#0e1c29;color:#fff;border:1px solid #ffffff1b}.big{padding:15px 23px}
-.primary:hover, .secondary:hover { transform: scale(1.05) translateZ(10px); }
+.primary:hover,.secondary:hover{transform:scale(1.05) translateZ(10px)}
 
-/* ATUALIZAÇÃO 3D: Card de Perfil Lateral */
-.card{
-    position:absolute;
-    z-index:10;
-    right:5vw;
-    bottom:5vh;
-    display:flex;
-    gap:12px;
-    align-items:center;
-    background:#07121dea;
-    border:1px solid #ffffff18;
-    border-radius:18px;
-    padding:14px 17px;
-    transform-style: preserve-3d;
-    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-.ava{
-    width:59px;
-    height:59px;
-    border-radius:15px;
-    background:linear-gradient(135deg,#223a4f,#101925);
-    display:grid;
-    place-items:center;
-    font-size:30px;
-    transform: translateZ(20px); /* Dá volume ao avatar flutuando fora do card */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-.card-info {
-    transform-style: preserve-3d;
-    transform: translateZ(15px);
-}
+.card{position:absolute;z-index:10;right:5vw;bottom:5vh;display:flex;gap:12px;align-items:center;background:#07121dea;border:1px solid #ffffff18;border-radius:18px;padding:14px 17px;transform-style:preserve-3d;transition:transform 0.15s ease-out;will-change:transform;box-shadow:0 20px 40px rgba(0,0,0,0.5)}
+.ava{width:59px;height:59px;border-radius:15px;background:linear-gradient(135deg,#223a4f,#101925);display:grid;place-items:center;font-size:30px;transform:translateZ(20px);box-shadow:0 5px 15px rgba(0,0,0,0.3)}
+.card-info{transform-style:preserve-3d;transform:translateZ(15px)}
 .card b,.card small,.card span{display:block}.card small{font-size:10px;color:#92a6b6}.card span{font-size:10px;color:var(--gold);margin-top:6px}
 
-.loading{display:none;position:absolute;z-index:95;inset:0;background:#04090f;place-items:center;text-align:center}.loading.show{display:grid}.spinner{width:46px;height:46px;border-radius:50%;border:3px solid #ffffff18;border-top-color:var(--gold);margin:0 auto 14px;animation:spin .9s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 .hud{position:absolute;z-index:20;left:14px;top:14px;display:flex;gap:7px;flex-wrap:wrap}.hud>div{min-width:90px;background:#07121dea;border:1px solid #ffffff18;border-radius:11px;padding:8px 11px}.hud small{display:block;font-size:7px;color:#8ba0af;letter-spacing:.12em}
 .realm{position:absolute;z-index:20;left:50%;top:16px;transform:translateX(-50%);font-size:10px;font-weight:950;letter-spacing:.22em}
-.pause{position:absolute;z-index:20;right:14px;top:14px;width:42px;height:42px;border-radius:50%;background:#07121de8;color:#fff;border:1px solid #ffffff18}
-.chaser{position:absolute;z-index:20;right:14px;top:65px;font-size:9px;background:#07121de8;border:1px solid #ffffff18;border-radius:10px;padding:8px 10px;color:#b9c5ce}.chaser b{color:#ffd09b}
-.toast{position:absolute;z-index:26;left:50%;top:105px;transform:translateX(-50%);font-weight:950;color:#ffe9b5;text-shadow:0 2px 10px #000}
-.boss{display:none;position:absolute;z-index:25;top:52px;left:50%;transform:translateX(-50%);width:min(410px,64vw);text-align:center;font-size:8px;letter-spacing:.14em}.boss.show{display:block}.boss div{height:8px;background:#321619;border-radius:8px;overflow:hidden;margin-top:5px}.boss i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#a92f32,#ef7658)}
-.portalLabel{position:absolute;z-index:25;left:50%;top:40%;transform:translate(-50%,-50%);font-size:clamp(26px,5vw,52px);font-weight:950;color:#fff1bd;text-shadow:0 6px 18px #000;opacity:0;transition:.2s}.portalLabel.show{opacity:1}.turnCue{top:31%;font-size:clamp(20px,4.4vw,44px);padding:10px 18px;border-radius:16px;background:rgba(5,11,18,.62);border:1px solid rgba(255,225,160,.30);backdrop-filter:blur(5px);white-space:nowrap}.turnCue.ok{color:#bfffc7;border-color:rgba(130,255,160,.42)}.turnCue.miss{color:#ffb0a6;border-color:rgba(255,110,90,.48)}
-.touch{display:none;position:absolute;z-index:25;left:50%;bottom:12px;transform:translateX(-50%);gap:7px}.touch button{width:62px;height:58px;border-radius:12px;background:#06111ccc;color:#fff;border:1px solid #ffffff1c;font-size:22px}
+@media(max-width:760px){.menu{left:20px;right:20px;top:5vh}.menu h1{font-size:52px}.card{right:14px;bottom:3vh}}
+</style>
+<script src="https://cloudflare.com"></script>
+</head>
+<body>
 
-/* ATUALIZAÇÃO 3D: Painel de Resultados Finais */
-.overlay{display:none;position:absolute;z-index:70;inset:0;background:#02070de8;place-items:center;padding:20px;perspective: 1500px;}.overlay.show{display:grid}
-.modal{
-    width:min(430px,94vw);
-    background:#0b1722;
-    border:1px solid #ffffff1b;
-    border-radius:20px;
-    text-align:center;
-    padding:27px;
-    transform-style: preserve-3d;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.8);
-    animation: openModal3D 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-@keyframes openModal3D {
-    from { transform: rotateX(-30deg) translateZ(-200px); opacity: 0; }
-    to { transform: rotateX(0deg) translateZ(0); opacity: 1; }
-}
-.modal p{color:#98aab8;line-height:1.55}.modal .primary,.modal .secondary{width:100%;margin-top:8px}
-.result{background:radial-gradient(circle at 50% 8%,#173149,#08121d 48%,#04080d 100%)}
-.resultbox{width:min(760px,92vw);margin:auto;padding-top:10vh;text-align:center;perspective: 1000px;}
+<div class="top">
+    <div class="brand">MR-1010 • <b>MAX REALMS</b> <small>v3.0</small></div>
+    <div class="meta">
+        <div>FOREST: <span style="color:var(--gold)">3D CINEMATIC</span></div>
+        <div>ENGINE: <span style="color:#6affaa">WEBGL</span></div>
+    </div>
+    <button class="circle">?</button>
+</div>
 
-/* ATUALIZAÇÃO 3D: Grade de Dados Grid */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;margin:27px 0;
-    transform-style: preserve-3d;
-}
-.grid div{
-    background:#0b1722;
-    border:1px solid #ffffff13;
-    border-radius:15px;
-    padding:17px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.grid div:hover {
-    transform: translateZ(30px) rotateY(5deg); /* Elevação individual em 3D ao passar o mouse */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-    border-color: var(--gold);
-}
-.grid small{display:block;color:#8295a5;font-size:8px}.grid b{display:block;font-size:22px;margin-top:7px}
-@media(max-width:760px){.top{padding:0 12px}.brand{font-size:13px}.meta{gap:7px;font-size:11px}.menu{left:20px;right:20px;top:5vh}.menu h1{font-size:52px}.menu p{font-size:13px}.card{right:14px;bottom:73px}.touch{display:none}.hud>div{min-width:88px;padding:10px 11px}.realm{top:62px}.chaser{top:100px}.toast{top:128px}.boss{top:88px;width:72vw}.grid{grid-template-columns:1fr 1fr}}
+<div class="screen active" id="mainScreen">
+    <div class="host">
+        <canvas id="renderCanvas"></canvas>
+    </div>
+    <div class="shade"></div>
+    
+    <div class="hud">
+        <div><small>DISTÂNCIA</small><b id="distTxt">0m</b></div>
+        <div><small>MOEDAS</small><b style="color:var(--gold)">42</b></div>
+    </div>
+    
+    <div class="realm">FLORESTA ANCESTRAL</div>
 
-.fxVignette{position:absolute;z-index:12;inset:0;pointer-events:none;opacity:1;transition:background .45s ease,opacity .45s ease;
-background:radial-gradient(circle at 50% 46%,transparent 48%,rgba(0,0,0,.28) 82%,rgba(0,0,0,.50) 100%)}
-.fxVignette.thirst{background:radial-gradient(circle at 50% 46%,transparent 44%,rgba(92,25,12,.12) 70%,rgba(98,22,8,.48) 100%)}
-.fxVignette.critical{background:radial-gradient(circle at 50% 46%,rgba(255,170,80,.035) 20%,rgba(95,20,8,.20) 62%,rgba(105,18,8,.64) 100%)}
+    <div class="menu" id="3dMenu">
+        <div class="eyebrow">PERSPECTIVA EM TERCEIRA PESSOA</div>
+        <h1>MAX <em>RUN</em></h1>
+        <p>Vivencie o formato clássico de dimensões de corrida infinita com polígonos responsivos e profundidade de câmera dinâmica.</p>
+        <div class="action-container">
+            <button class="primary big" id="startBtn">CORRER AGORA</button>
+        </div>
+    </div>
 
-.releaseBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.panelBtn{padding:11px 14px;border-radius:11px;background:#0d1a25;color:#fff;border:1px solid #ffffff18;font-weight:850}
-.releasePanel{display:none;position:absolute;z-index:60;inset:0;background:#02070ded;padding:24px;overflow:auto}
-.releasePanel.show{display:block}
-.releaseCard{max-width:820px;margin:30px auto;background:#091520;border:1px solid #ffffff18;border-radius:20px;padding:22px}
-.releaseCard h2{margin-top:0}
-.releaseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.releaseTile{background:#0d1b27;border:1px solid #ffffff12;border-radius:14px;padding:15px}
-.releaseTile small{display:block;color:#8296a6;font-size:9px;margin-bottom:5px}
-.releaseTile b{display:block}
-.buy{margin-top:10px;width:100%;padding:9px;border-radius:10px;background:#d6a94f;color:#171007;font-weight:950}
-.buy[disabled]{opacity:.45;cursor:not-allowed}
-.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#1b2b38;color:#cfe8ff;font-size:9px;margin-top:6px}
-@media(max-width:760px){.releaseGrid{grid-template-columns:1fr}.releaseBtns{gap:7px}.panelBtn{font-size:12px;padding:9px 11px}}
+    <div class="card" id="3dCard">
+        <div class="ava">🏃</div>
+        <div class="card-info">
+            <small>CONTROLES</small>
+            <b>Setas / Mouse</b>
+            <span>RENDER DINÂMICO 3D</span>
+        </div>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById('renderCanvas');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x03060a);
+scene.fog = new THREE.FogExp2(0x03060a, 0.035);
+
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / (window.innerHeight - 58), 0.1, 1000);
+camera.position.set(0, 4, 10);
+camera.lookAt(0, 1.5, -5);
+
+const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight - 58);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const ambientLight = new THREE.AmbientLight(0x1a2b3c, 1.5);
+scene.add(ambientLight);
+
+const dirLight = new THREE.DirectionalLight(0xf4c56a, 2.5);
+dirLight.position.set(5, 15, 5);
+scene.add(dirLight);
+
+const trackGeometry = new THREE.BoxGeometry(4, 0.5, 100);
+const trackMaterial = new THREE.MeshStandardMaterial({ color: 0x091420, roughness: 0.7, metalness: 0.2 });
+const track = new THREE.Mesh(trackGeometry, trackMaterial);
+track.position.set(0, -0.25, -40);
+scene.add(track);
+
+const obstacles = [];
+const obstacleGeo = new THREE.BoxGeometry(0.8, 4, 2);
+const obstacleMat = new THREE.MeshStandardMaterial({ color: 0x061019, roughness: 0.9 });
+
+for (let i = 0; i < 20; i++) {
+    const leftWall = new THREE.Mesh(obstacleGeo, obstacleMat);
+    leftWall.position.set(-2.5, 2, -i * 6);
+    scene.add(leftWall);
+    obstacles.push(leftWall);
+
+    const rightWall = new THREE.Mesh(obstacleGeo, obstacleMat);
+    rightWall.position.set(2.5, 2, -i * 6);
+    scene.add(rightWall);
+    obstacles.push(rightWall);
+}
+
+const treeGroup = new THREE.Group();
+const trunkGeo = new THREE.CylinderGeometry(0.15, 0.25, 1);
+const trunkMat = new THREE.MeshStandardMaterial({ color: 0x221105 });
+const leavesGeo = new THREE.ConeGeometry(0.8, 2, 5);
+const leavesMat = new THREE.MeshStandardMaterial({ color: 0x12281c, roughness: 0.9 });
+
+for (let i = 0; i < 40; i++) {
+    const tree = new THREE.Group();
+    const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+    trunk.position.y = 0.5;
+    const leaves = new THREE.Mesh(leavesGeo, leavesMat);
+    leaves.position.y = 1.8;
+    tree.add(trunk, leaves);
+    
+    const side = Math.random() > 0.5 ? 1 : -1;
+    tree.position.set((4 + Math.random() * 8) * side, 0, -Math.random() * 90);
+    treeGroup.add(tree);
+}
+scene.add(treeGroup);
+
+const player = new THREE.Group();
+const bodyGeo = new THREE.BoxGeometry(0.6, 0.8, 0.4);
+const bodyMat = new THREE.MeshStandardMaterial({ color: 0xad6c19, roughness: 0.5 });
+const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
+bodyMesh.position.y = 0.9;
+player.add(bodyMesh);
+
+const headGeo = new THREE.BoxGeometry(0.35, 0.35, 0.35);
+const headMat = new THREE.MeshStandardMaterial({ color: 0xf4c56a });
+const headMesh = new THREE.Mesh(headGeo, headMat);
+headMesh.position.y = 1.5;
+player.add(headMesh);
+
+player.position.set(0, 0, 2);
+scene.add(player);
+
+let distance = 0;
+let targetX = 0;
+let gameSpeed = 0.25;
+let isMoving = true;
+
+window.addEventListener('mousemove', (e) => {
+    const normX = (e.clientX / window.innerWidth) * 2 - 1;
+    targetX = normX * 1.5; 
+    
+    const menu = document.getElementById('3dMenu');
+    const card = document.getElementById('3dCard');
+    if(menu) menu.style.transform = `rotateX(${-normX * 15}deg) rotateY(${normX * 15}deg)`;
+    if(card) card.style.transform = `rotateX(${-normX * 15}deg) rotateY(${normX * 15}deg)`;
+});
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    if (isMoving) {
+        distance += 0.5;
+        document.getElementById('distTxt').innerText = Math.floor(distance) + 'm';
+
+        player.position.x += (targetX - player.position.x) * 0.1;
+        player.rotation.y = (targetX - player.position.x) * 0.3;
+
+        player.position.y = Math.abs(Math.sin(distance * 0.15)) * 0.12;
+
+        obstacles.forEach(obs => {
+            obs.position.z += gameSpeed;
+            if (obs.position.z > 12) {
+                obs.position.z = -90;
+            }
+        });
+
+        treeGroup.children.forEach(tree => {
+            tree.position.z += gameSpeed;
+            if (tree.position.z > 12) {
+                tree.position.z = -90 - Math.random() * 10;
+            }
+        });
+    }
+
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / (window.innerHeight - 58);
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight - 58);
+});
+
+animate();
+
+document.getElementById('startBtn').addEventListener('click', () => {
+    document.getElementById('3dMenu').style.opacity = '0';
+    document.getElementById('3dMenu').style.pointerEvents = 'none';
+    gameSpeed = 0.5;
+});
+</script>
+
+</body>
+</html>
